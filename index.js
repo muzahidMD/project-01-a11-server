@@ -32,6 +32,14 @@ async function run() {
             res.send(product);
         });
 
+        app.get('/myitems', async (req, res) => {
+            const email = req.query.email;
+            const query = { email: email };
+            const cursor = productCollection.find(query);
+            const myProducts = cursor.toArray();
+            res.send(myProducts);
+        })
+
         // POST
         app.post('/product', async (req, res) => {
             const newProduct = req.body;
