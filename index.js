@@ -49,6 +49,7 @@ async function run() {
                 $set: updatedProduct
             };
             const result = await productCollection.updateOne(filter, updatedDoc, options);
+            res.send(result);
         })
 
         // DELETE
