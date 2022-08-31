@@ -18,6 +18,7 @@ async function run() {
         await client.connect();
         const productCollection = client.db('eggrocery').collection('product');
 
+        // get product
         app.get('/product', async (req, res) => {
             const query = {};
             const cursor = productCollection.find(query);
@@ -25,6 +26,7 @@ async function run() {
             res.send(products);
         });
 
+        // get product id
         app.get('/product/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
@@ -79,4 +81,4 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
     console.log('Listening to prot', port)
-})
+});
